@@ -11,8 +11,8 @@ export default {
      },
      methods: {
           cerca_carta() {
-               axios.get('https://api.themoviedb.org/3/search/movie?api_key=b14cb6542ceb213de135cbf06fce03e7&query=' + store.ricerca).then((response) => {
-                    console.log(response.data.results)
+               axios.get('https://api.themoviedb.org/3/search/movie?api_key=b14cb6542ceb213de135cbf06fce03e7&language=it_IT&query=' + store.ricerca).then((response) => {
+                    // console.log(response.data.results)
                     let response_movie = response.data.results;
                     response_movie.forEach(element => {
 
@@ -26,10 +26,30 @@ export default {
 
                          this.store.movies.push(obj)
                     });
-                    console.log(this.store.movies)
+                    // console.log(this.store.movies)
+
+               })
+               axios.get('https://api.themoviedb.org/3/search/tv?api_key=b14cb6542ceb213de135cbf06fce03e7&language=it_IT&query=' + store.ricerca).then((response) => {
+                    console.log(response.data.results)
+                    let response_series = response.data.results;
+                    response_series.forEach(element => {
+
+                         let obj = {
+                              nome: element.name,
+                              nome_org: element.original_name,
+                              image: element.poster_path,
+                              lang: element.original_language,
+                              voto: element.vote_average
+
+                         }
+
+                         this.store.series.push(obj)
+                    });
+                    console.log(this.store.series)
 
                })
                store.movies=[],
+               store.series=[],
                store.ricerca=''
 
           }
