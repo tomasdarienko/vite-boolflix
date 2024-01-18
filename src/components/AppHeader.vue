@@ -20,7 +20,8 @@ export default {
                               nome: element.original_title,
                               image: "https://image.tmdb.org/t/p/w342/"+element.poster_path,
                               lang: element.original_language,
-                              voto: element.vote_average
+                              voto: element.vote_average,
+                              overview: element.overview,
 
                          }
 
@@ -36,6 +37,7 @@ export default {
 
                          let obj = {
                               nome: element.name,
+                              overview: element.overview,
                               nome_org: element.original_name,
                               image: "https://image.tmdb.org/t/p/w342/"+element.poster_path,
                               lang: element.original_language,
