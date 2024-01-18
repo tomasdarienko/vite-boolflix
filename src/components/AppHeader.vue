@@ -18,7 +18,7 @@ export default {
 
                          let obj = {
                               nome: element.original_title,
-                              image: element.poster_path,
+                              image: "https://image.tmdb.org/t/p/w342/"+element.poster_path,
                               lang: element.original_language,
                               voto: element.vote_average
 
@@ -37,7 +37,7 @@ export default {
                          let obj = {
                               nome: element.name,
                               nome_org: element.original_name,
-                              image: element.poster_path,
+                              image: "https://image.tmdb.org/t/p/w342/"+element.poster_path,
                               lang: element.original_language,
                               voto: element.vote_average
 

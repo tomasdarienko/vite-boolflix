@@ -11,29 +11,43 @@ export default {
      },
      methods: {
           bandiera(index) {
-               return "https://countryflagsapi.com/png/"+store.movies[index].lang
-               }
-          }
+               return "https://flagcdn.com/16x12/" + store.movies[index].lang + ".png"
+          },
 
-     
+          stelle_m(index){
+              return  Math.ceil(store.movies[index].voto /2)
+          },
+          stelle_s(index){
+              return  Math.ceil(store.series[index].voto /2)
+          }
+     }
+
+
+
 };
 
 </script>
 
 <template>
      <h2>movie</h2>
-     <div v-for="movie, index in store.movies" class="card">
-          <h5>{{ movie.nome }}</h5>
-          <p>{{ movie.lang }}</p>
-          <p>{{ movie.voto }}</p>
-          <img :src=bandiera(index) alt="">
+     <div class="container">
+          <div v-for="movie, index in store.movies" class="card">
+               <img :src=movie.image alt="">
+               <h5>{{ movie.nome }}</h5>
+               <p>{{ movie.lang }}</p>
+               <p>{{  stelle_m(index) }}</p>
+               <img :src=bandiera(index) alt="">
+          </div>
      </div>
      <h2>serie</h2>
-     <div v-for="serie, index in store.series" class="card">
-          <h5>{{ serie.nome }}</h5>
-          <p>{{ serie.nome_org }}</p>
-          <p>{{ serie.voto }}</p>
-
+     <div class="container">
+          <div v-for="serie, index in store.series" class="card">
+               <img :src=serie.image alt="">
+               <h5>{{ serie.nome }}</h5>
+               <p>{{ serie.nome_org }}</p>
+               <p>{{  stelle_s(index) }}</p>
+               <img :src=bandiera(index) alt="">
+          </div>
      </div>
 </template>
 
