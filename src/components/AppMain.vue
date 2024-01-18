@@ -10,8 +10,8 @@ export default {
           }
      },
      methods: {
-          bandiera(code) {
-               store.movies[index].lang.toUpperCase().replace(/./g, char => String.fromCodePoint(char.charCodeAt(0)+127397) );
+          bandiera(index) {
+               return "https://countryflagsapi.com/png/"+store.movies[index].lang
                }
           }
 
@@ -23,16 +23,16 @@ export default {
 <template>
      <h2>movie</h2>
      <div v-for="movie, index in store.movies" class="card">
-          <h5>{{ store.movies[index].nome }}</h5>
-          <p>{{ store.movies[index].lang }}</p>
-          <p>{{ this.store.movies[index].voto }}</p>
-
+          <h5>{{ movie.nome }}</h5>
+          <p>{{ movie.lang }}</p>
+          <p>{{ movie.voto }}</p>
+          <img :src=bandiera(index) alt="">
      </div>
      <h2>serie</h2>
      <div v-for="serie, index in store.series" class="card">
-          <h5>{{ store.series[index].nome }}</h5>
-          <p>{{ store.series[index].nome_org }}</p>
-          <p>{{ this.store.series[index].voto }}</p>
+          <h5>{{ serie.nome }}</h5>
+          <p>{{ serie.nome_org }}</p>
+          <p>{{ serie.voto }}</p>
 
      </div>
 </template>
